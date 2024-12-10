@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +9,10 @@ public class NPC : MonoBehaviour
     [SerializeField] private DialogoSO miDialogo;
     [SerializeField] private float duracionRotacion;
 
+    internal void Interactuar()
+    {
+        throw new NotImplementedException();
+    }
     
     public void Interactuar(Transform interactuador)
     {
@@ -14,6 +20,7 @@ public class NPC : MonoBehaviour
         //Cuando termine de rotarme....se inicia la interacion
         //transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteraccion);
     }
+
 
     private void IniciarInteracion()
     {
