@@ -15,11 +15,13 @@ public class SistemaDialogo : MonoBehaviour
     [SerializeField] private GameObject marcoDialogo;//marco a habilitar/deshabilitar
 
     [SerializeField] private TMP_Text textoDialogo;// el texto donde se veran reflejados los dialogos
+    
+    [SerializeField] private Transform npcCamera;// Camara compartida por todos los NPC
 
     private bool escribiendo;
     private int indiceFraseActual = 0;
 
-    private DialogoSO dialogoActual;
+    private DialogoSO dialogoActual;// para saber en todo momento
 
     public static SistemaDialogo sitema;
 
@@ -41,7 +43,7 @@ public class SistemaDialogo : MonoBehaviour
         }
     }
 
-    public void IniciarDialogo(DialogoSO dialogo)
+    public void IniciarDialogo(DialogoSO dialogo, Transform cameraPoint)
     {
         Time.timeScale = 0;
 
@@ -49,6 +51,14 @@ public class SistemaDialogo : MonoBehaviour
         //el dialogo actual que tenemos que tratar es el que me pasan por paraametro
         dialogoActual = dialogo;
         marcoDialogo.SetActive(true);
+        //posiciono la camera en el punto de este NPC
+
+
+        //npcCamera.SetPositionAndRotation(cameraPoint.position)
+        npcCamera.position = cameraPoint.position;
+        npcCamera.rotation = cameraPoint.rotation;
+
+
         StartCoroutine(EscribirFrase());
 
     }
