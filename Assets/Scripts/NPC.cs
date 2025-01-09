@@ -8,18 +8,13 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private DialogoSO miDialogo;
     [SerializeField] private float duracionRotacion;
+
+
     [SerializeField] private Transform cameraPoint; //punto en el que se pondra CameraNPC
 
-    internal void Interactuar()
-    {
-        throw new NotImplementedException();
-    }
-    
     public void Interactuar(Transform interactuador)
     {
-        //poco a poco voy rotando hacia el interactuador y
-        //Cuando termine de rotarme....se inicia la interacion
-        //transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteraccion);
+        transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteracion);
     }
 
 

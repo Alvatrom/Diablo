@@ -21,7 +21,7 @@ public class SistemaDialogo : MonoBehaviour
     private bool escribiendo;
     private int indiceFraseActual = 0;
 
-    private DialogoSO dialogoActual;// para saber en todo momento
+    private DialogoSO dialogoActual;// para saber en todo momento cual es el dialogo con el que estamos trabajando
 
     public static SistemaDialogo sitema;
 
@@ -54,9 +54,9 @@ public class SistemaDialogo : MonoBehaviour
         //posiciono la camera en el punto de este NPC
 
 
-        //npcCamera.SetPositionAndRotation(cameraPoint.position)
-        npcCamera.position = cameraPoint.position;
-        npcCamera.rotation = cameraPoint.rotation;
+        npcCamera.SetPositionAndRotation(cameraPoint.position, cameraPoint.rotation);
+        /*npcCamera.position = cameraPoint.position;
+        npcCamera.rotation = cameraPoint.rotation;*/
 
 
         StartCoroutine(EscribirFrase());
@@ -66,6 +66,7 @@ public class SistemaDialogo : MonoBehaviour
     private IEnumerator EscribirFrase()
     {
         escribiendo = true;
+
         //Limpio el texto
         textoDialogo.text = string.Empty;
         //Desmenuza la frase por caracteres por separado.

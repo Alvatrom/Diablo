@@ -7,26 +7,33 @@ using UnityEngine.Jobs;
 
 public class SistemaPatrulla : MonoBehaviour
 {
+    [SerializeField] private Enemy main;
+
     [SerializeField] private Transform ruta;
 
     [SerializeField] private NavMeshAgent agent;
 
+    [SerializeField] float velocidadPatrulla;
+
     private List<Vector3> listadoPuntos = new List<Vector3>();
 
-    private int indiceActual = 0; //marca el punto al cual debo ir
-
+    private int indiceDestinoActual = -1;//marca el punto al cual debo ir 
 
     private Vector3 destinoActual;
 
-
-
     private void Awake()
     {
+        //le digo al "main" (enemigo) que el sistema de patrulla que tiene soy yo
+        main.Patrulla = this;
         foreach (Transform t in ruta)
         {
             //añado todos los puntos de ruta al listado
             listadoPuntos.Add(t.position);
         }
+    }
+    private void OnEnable()
+    {
+        agent.speed = velocidadPatrulla;
     }
 
 
@@ -49,16 +56,26 @@ public class SistemaPatrulla : MonoBehaviour
 
     private void CalcularDestino()
     {
-        indiceActual++;
+        indiceDestinoActual++;
 
         //si nos hemos quedado sin puntos...
-        if(indiceActual >= listadoPuntos.Count)
+        if(indiceDestinoActual >= listadoPuntos.Count)
         {
-            indiceActual = 0;
+            indiceDestinoActual = 0;
         }
 
         //mi destino es dentro del listado de puntos aquel con el nuevo indice calculado.
-        destinoActual = listadoPuntos[indiceActual];
+        destinoActual = listadoPuntos[indiceDestinoActual];
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            StopAllCoroutines();//abandonamos la corrutina de patrulla
+
+            //le digo a "main" que active el combate,pasandole el objetivo al que tiene que perseguir
+            main.ActivarCombate(other.transform);
+        }
     }
 }
