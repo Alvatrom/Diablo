@@ -292,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15267494}
   - component: {fileID: 15267495}
+  - component: {fileID: 15267496}
   m_Layer: 0
   m_Name: Enemy_Visual
   m_TagString: Untagged
@@ -335,6 +336,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &15267496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15267493}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584a070cc2bc102459f2ff48a2cc857c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main: {fileID: 447053712}
+  agent: {fileID: 447053709}
+  anim: {fileID: 15267495}
+  velocidadCombate: 2.5
+  distanciaAtaque: 2
+  danhoAtaque: 0
 --- !u!1001 &16824171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3594,10 +3613,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -334000983
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: Infinity
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 600
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -3645,7 +3664,6 @@ Transform:
   - {fileID: 284406644}
   - {fileID: 1892546035}
   - {fileID: 15267494}
-  - {fileID: 1669884453}
   - {fileID: 641895864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3725,7 +3743,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.1
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 4d298f79e274a6249b661eac45f6d774, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 28549e363cc235a4b9fc2adce7f3f9aa, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &449699837
 MonoBehaviour:
@@ -3747,7 +3765,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_UseGeometry: 0
-  m_DefaultArea: 0
+  m_DefaultArea: 3
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -12641,53 +12659,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1669884452
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1669884453}
-  - component: {fileID: 1669884454}
-  m_Layer: 0
-  m_Name: SistemaCombate
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1669884453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669884452}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 447053711}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1669884454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669884452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584a070cc2bc102459f2ff48a2cc857c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  main: {fileID: 447053712}
-  agent: {fileID: 447053709}
-  velocidadCombate: 2.5
 --- !u!1 &1673131799
 GameObject:
   m_ObjectHideFlags: 0
@@ -14667,7 +14638,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892546034}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3903b3b9ac7377418104f731558e795, type: 3}
   m_Name: 
@@ -14675,7 +14646,7 @@ MonoBehaviour:
   main: {fileID: 447053712}
   ruta: {fileID: 641895864}
   agent: {fileID: 447053709}
-  velocidadPatrulla: 0
+  velocidadPatrulla: 1.5
 --- !u!135 &1892546037
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,4 +70,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void HacerDanho(float danhoAtaque)
+    {
+        Debug.Log("Me hacen pupa: " +  danhoAtaque);
+    }
 }

@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Empieza el juego y activamos la patrulla
+        patrulla.enabled = true;
     }
 
     // Update is called once per frame
@@ -33,5 +34,13 @@ public class Enemy : MonoBehaviour
         patrulla.enabled = false;
         combate.enabled = true;
         this.Target = target;
+    }
+
+    public void ActivarPatrulla()
+    {
+        //Deshbilitar combate
+        combate.enabled = false;
+        //habilitar patrulla
+        patrulla.enabled = true;
     }
 }
