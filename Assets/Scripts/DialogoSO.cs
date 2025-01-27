@@ -7,5 +7,9 @@ public class DialogoSO : ScriptableObject
 {
     [TextArea(5, 10)]
     public string[] frases;
+    public AudioClip[] frasesClips;
     public float tiempoEntreLetras;
+
+    public bool tieneMision;
+    public MisionSO mision;
 }

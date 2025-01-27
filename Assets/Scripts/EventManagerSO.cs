@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Event Manager")]
 public class EventManagerSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    //creo un evento
+    public event Action<MisionSO> OnNuevaMision;
+    public void NuevaMision(MisionSO mision)
     {
-        
-    }
+        // Lanzar/disparar el evento/notificacion con parametros(informacion adicional)
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //?. -> Invocacion SEGURA
+        OnNuevaMision?.Invoke(mision);
     }
 }

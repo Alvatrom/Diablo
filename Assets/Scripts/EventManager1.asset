@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ab9dd8f6385aa4689264fe43a06f7a, type: 3}
-  m_Name: Dialogo1
+  m_Script: {fileID: 11500000, guid: 6870db9a618d8e04898e64fe19d93447, type: 3}
+  m_Name: EventManager1
   m_EditorClassIdentifier: 
-  frases:
-  - 
-  frasesClips: []
-  tiempoEntreLetras: 0.02
-  tieneMision: 0
-  mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}

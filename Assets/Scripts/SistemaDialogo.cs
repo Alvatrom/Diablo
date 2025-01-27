@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class SistemaDialogo : MonoBehaviour
 {
+
+    public static SistemaDialogo sD;
+
+    private EventManagerSO eventManager;
     //patron singleton:
     //1. Solo existe una unica instancia de SistemaDialogo
     //2. Es accesible desde Cualquier Punto del programa
@@ -122,6 +126,11 @@ public class SistemaDialogo : MonoBehaviour
         marcoDialogo.SetActive(false); //cerramos el marco de dialogo
         indiceFraseActual = 0; // para que en posteriores dialogo empezamos desde indice 0.
         escribiendo =false;
+
+        if (dialogoActual.tieneMision)
+        {
+            eventManager.NuevaMision(dialogoActual.mision);
+        }
         dialogoActual = null;// Ya no tengo dialogo que escribir
     }
 
