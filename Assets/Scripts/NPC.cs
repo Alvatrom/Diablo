@@ -10,11 +10,29 @@ public class NPC : MonoBehaviour,IInteractuable
     [SerializeField] private float duracionRotacion;
 
 
+    [SerializeField] private EventManagerSO eventManager;
+
+    [SerializeField]
+
+
+    private DialogoSO dialogoActual;
+
+
+
+
     [SerializeField] private Transform cameraPoint; //punto en el que se pondra CameraNPC
 
     public void Interactuar(Transform interactuador)
     {
         transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteracion);
+    }
+
+    private void CambiarDialogo(MisionSO misionTerminada)
+    {
+        if(misionTerminada == misionTerminada)
+        {
+            //dialogoActual = dialogo2;
+        }
     }
 
     public void Interactuar()
@@ -25,6 +43,14 @@ public class NPC : MonoBehaviour,IInteractuable
     private void IniciarInteracion()
     {
         //SistemaDialogo.sistema.IniciarDialogo(miDialogo, cameraPoint);
+    }
+    private void Awake()
+    {
+        //dialogoActual = dialogo1;
+    }
+    private void OnDisable()
+    {
+        eventManager.OnTerminarMision -= CambiarDialogo;
     }
     void Start()
     {

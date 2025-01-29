@@ -7,5 +7,5 @@ using UnityEngine;
 //en aquellas identidades que , en este caso, sean interactuables
 public interface IInteractuable
 {
-    public void Interactuar();
+    public void Interactuar(Transform interactor);
 }
