@@ -6,60 +6,65 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour,IInteractuable
 {
-    [SerializeField] private DialogoSO miDialogo;
-    [SerializeField] private float duracionRotacion;
-
-
-    [SerializeField] private EventManagerSO eventManager;
+    [SerializeField] 
+    private EventManagerSO eventManager;
 
     [SerializeField]
+    private MisionSO miMision;
+
+    [SerializeField] 
+    private DialogoSO dialogo1;
+
+    [SerializeField] 
+    private DialogoSO dialogo2;
+
+
+    [SerializeField] 
+    private Transform cameraPoint; //punto en el que se pondra CameraNPC
+
+    [SerializeField] 
+    private float duracionRotacion = 0.5f;
+
+
 
 
     private DialogoSO dialogoActual;
 
+    [SerializeField] 
+    private DialogoSO miDialogo;
 
 
-
-    [SerializeField] private Transform cameraPoint; //punto en el que se pondra CameraNPC
-
-    public void Interactuar(Transform interactuador)
-    {
-        transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarInteracion);
-    }
-
-    private void CambiarDialogo(MisionSO misionTerminada)
-    {
-        if(misionTerminada == misionTerminada)
-        {
-            //dialogoActual = dialogo2;
-        }
-    }
-
-    public void Interactuar()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void IniciarInteracion()
-    {
-        //SistemaDialogo.sistema.IniciarDialogo(miDialogo, cameraPoint);
-    }
     private void Awake()
     {
-        //dialogoActual = dialogo1;
+        dialogoActual = dialogo1;
     }
+
+    private void OnEnable()
+    {
+        eventManager.OnTerminarMision += CambiarDialogo;
+    }
+
+
     private void OnDisable()
     {
         eventManager.OnTerminarMision -= CambiarDialogo;
     }
-    void Start()
+
+    private void CambiarDialogo(MisionSO misionTerminada)
     {
-        
+        if(miMision == misionTerminada)
+        {
+            dialogoActual = dialogo2;
+        }
+    }
+    public void Interactuar(Transform interactuador)
+    {
+        transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarDialogo);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void IniciarDialogo()
     {
-        
+        SistemaDialogo.sD.IniciarDialogo(dialogoActual, cameraPoint);
     }
+
 }

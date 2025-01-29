@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Dialogo1
   m_EditorClassIdentifier: 
   frases:
-  - 
+  - Anda, hola caballero, pensaba que era el unico por esta mazmorra
+  - "\xBFQue te trae por aqui? Bueno la verdad que no puedo perder el tiempo hablando
+    contigo necesito encontrar unas setas malvadas para curar a mi esposa de una
+    horrible enfermedad"
+  - "\xBFPodrias ayudarme a encontrarlas? Te reconpensare"
   frasesClips: []
-  tiempoEntreLetras: 0.02
-  tieneMision: 0
+  tiempoEntreLetras: 0.01
+  tieneMision: 1
   mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}

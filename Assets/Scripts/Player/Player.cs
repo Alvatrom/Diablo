@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private NavMeshAgent agent;
     private NPC npc;
     private Transform ultimoClick;
+
+    [SerializeField] private MisionSO interactuador;
     // Start is called before the first frame update
     void Start()
     {

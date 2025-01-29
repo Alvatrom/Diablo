@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Mision1
   m_EditorClassIdentifier: 
   ordenInicial: Recupera hasta 3 setas de la muerte
-  ordenFinal: Vuelve con Juana
+  ordenFinal: Vuelve con el Enano
   tieneRepeticion: 1
   totalRepeticiones: 3
   indiceMision: 0
-  repeticionActual: 0

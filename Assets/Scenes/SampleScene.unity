@@ -2930,6 +2930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ce5aa5a9d20aa408e30c340ecd1550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactuador: {fileID: 0}
 --- !u!1001 &181301594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5716,9 +5717,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0c08944934a424d9cbd068de2c78c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventManager: {fileID: 11400000, guid: af0642a738244e243a4ff19bba210c33, type: 2}
+  miMision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}
+  dialogo1: {fileID: 11400000, guid: 30263639af7a6f44884e43004ea7b622, type: 2}
+  dialogo2: {fileID: 11400000, guid: dfd0e04232e4bc14dbcf9e488f6a55eb, type: 2}
+  cameraPoint: {fileID: 1118696874}
+  duracionRotacion: 0.5
   miDialogo: {fileID: 0}
-  duracionRotacion: 0
-  cameraPoint: {fileID: 0}
 --- !u!4 &392121637
 Transform:
   m_ObjectHideFlags: 0
@@ -32189,8 +32194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3481051d6a4bc354c809149ae82b01b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mision: {fileID: 0}
-  eventManager: {fileID: 0}
+  mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}
+  eventManager: {fileID: 11400000, guid: af0642a738244e243a4ff19bba210c33, type: 2}
 --- !u!4 &948520791351097855
 Transform:
   m_ObjectHideFlags: 0
