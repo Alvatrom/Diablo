@@ -34961,7 +34961,7 @@ PrefabInstance:
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
@@ -34971,17 +34971,17 @@ PrefabInstance:
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 402.6536
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 140.6412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
@@ -35021,12 +35021,12 @@ PrefabInstance:
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 201.3268
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70.3206
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253203201270939461, guid: f88ac47082269004ea267cd6566bb00c,
         type: 3}
@@ -35047,6 +35047,63 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ToggleMision
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049456417284328660, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198896581716193116, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_text
+      value: 'Hentai
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198896581716193116, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5198896581716193116, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 17.679
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 208.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716166902908495363, guid: f88ac47082269004ea267cd6566bb00c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
