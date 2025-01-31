@@ -371,6 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15267494}
   - component: {fileID: 15267495}
+  - component: {fileID: 15267497}
   - component: {fileID: 15267496}
   m_Layer: 0
   m_Name: Enemy_Visual
@@ -433,6 +434,19 @@ MonoBehaviour:
   velocidadCombate: 2.5
   distanciaAtaque: 2
   danhoAtaque: 0
+--- !u!114 &15267497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15267493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30984dd3177c0f428bb8c1ec91cb046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 447053709}
 --- !u!1001 &16824171
 PrefabInstance:
   m_ObjectHideFlags: 0
