@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+
+    [SerializeField] private GameManagerSO gM;
     private Camera cam;
     private NavMeshAgent agent;
     private NPC npc;
@@ -13,6 +15,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private MisionSO interactuador;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        ///////////////
+      //transform.position = gM.ultimaPosicionPlayer;
+    }
     void Start()
     {
         cam = Camera.main;
