@@ -66,5 +66,4 @@ public class NPC : MonoBehaviour,IInteractuable
     {
         SistemaDialogo.sD.IniciarDialogo(dialogoActual, cameraPoint);
     }
-
 }

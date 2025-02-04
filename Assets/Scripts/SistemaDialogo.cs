@@ -55,10 +55,13 @@ public class SistemaDialogo : MonoBehaviour
         //el dialogo actual que tenemos que tratar es el que me pasan por paraametro
         dialogoActual = dialogo;
         marcoDialogo.SetActive(true);
+       
+
+
         //posiciono la camera en el punto de este NPC
 
-
         npcCamera.SetPositionAndRotation(cameraPoint.position, cameraPoint.rotation);
+        //esto es lo mismo que la linea anterior
         /*npcCamera.position = cameraPoint.position;
         npcCamera.rotation = cameraPoint.rotation;*/
 
@@ -132,10 +135,5 @@ public class SistemaDialogo : MonoBehaviour
             eventManager.NuevaMision(dialogoActual.mision);
         }
         dialogoActual = null;// Ya no tengo dialogo que escribir
-    }
-
-    void Update()
-    {
-        
     }
 }
