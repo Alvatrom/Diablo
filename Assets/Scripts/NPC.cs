@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPC : MonoBehaviour,IInteractuable
 {
@@ -25,13 +26,15 @@ public class NPC : MonoBehaviour,IInteractuable
     [SerializeField] 
     private float duracionRotacion = 0.5f;
 
+    [SerializeField]
+    private Outline outline;
+    [SerializeField] private Texture2D iconoPorDefecto;
+    [SerializeField] private Texture2D iconoInteraccion;
+
 
 
 
     private DialogoSO dialogoActual;
-
-    [SerializeField] 
-    private DialogoSO miDialogo;
 
 
     private void Awake()
@@ -59,11 +62,21 @@ public class NPC : MonoBehaviour,IInteractuable
     }
     public void Interactuar(Transform interactuador)
     {
+        //poco a poco voy rotandome hacia el interactuador y cuando termine de rotarme se inicia
         transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarDialogo);
     }
 
     private void IniciarDialogo()
     {
         SistemaDialogo.sD.IniciarDialogo(dialogoActual, cameraPoint);
+    }
+
+    private void OnMouseEnter()
+    {
+        outline.enabled = true;
+    }
+    private void OnMouseExit()
+    {
+        outline.enabled = false;
     }
 }

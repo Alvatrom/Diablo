@@ -4,23 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDanhable
 {
+    [SerializeField] private float vidas = 200;
+    [SerializeField] private float interactionDistance = 2f;
+    [SerializeField] private float attackingDistance = 2f;
+    [SerializeField] private float danhoAtaque = 10f;
 
-    [SerializeField] private GameManagerSO gM;
-    private Camera cam;
+    private int totalCoins;
     private NavMeshAgent agent;
-    private NPC npc;
+    private Camera cam;
+    //private NPC npc;//////////////////////////////////////es necesario?
     private Transform ultimoClick;
+
+    private Transform currentTarget;
+    private PlayerVisual visualSystem;
+
+    public PlayerVisual VisualSystem { get => visualSystem; set => visualSystem = value; }
+    public int TotalCoins { get => totalCoins; set => totalCoins = value; }
+
+
+
+    [SerializeField] private GameManagerSO gM;// para el sistema de guardado
 
     [SerializeField] private MisionSO interactuador;
     // Start is called before the first frame update
 
-    private void Awake()
-    {
-        ///////////////
-      //transform.position = gM.ultimaPosicionPlayer;
-    }
+
     void Start()
     {
         cam = Camera.main;
@@ -58,30 +68,55 @@ public class Player : MonoBehaviour
     private void ComprobarInteraccion()
     {
         //si existe un interactuable al cual clike y lleva consigo el script NPC...
-        if (ultimoClick != null && ultimoClick.TryGetComponent(out NPC npc))
+        if (ultimoClick != null && ultimoClick.TryGetComponent(out IInteractuable interactor))
         {
             //actualizo distancia de parada para no chocarse con npc
-            agent.stoppingDistance = 2f;
+            agent.stoppingDistance = interactionDistance;
 
             //mira a ver si hemos llegado a dicho destino
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                //y por lo tanto , interactuo con el NPC.
-                npc.Interactuar(this.transform);
-
+                interactor.Interactuar(transform);
                 //me olvido de cual fue el ultimo click, porque solo quiero interactuar una vez
                 ultimoClick = null;
             }
-            else if (ultimoClick)
+            else if (ultimoClick.TryGetComponent(out IDanhable _))//mirar si es dañable
             {
-                //Reseteo el stoppingDistance original
+                currentTarget = ultimoClick;
+                agent.stoppingDistance = attackingDistance;
+                if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    FaceTarget();
+                    visualSystem.StartAttacking();
+                }
+            }
+            else
+            {
                 agent.stoppingDistance = 0f;
             }
         }
     }
 
-    public void HacerDanho(float danhoAtaque)
+    private void FaceTarget()
     {
-        Debug.Log("Me hacen pupa: " +  danhoAtaque);
+        Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
+        directionToTarget.y = 0f;
+        Quaternion rotationToTarget = Quaternion.LookRotation(directionToTarget);
+        transform.rotation = rotationToTarget;
+    }
+
+    public void Atacar()
+    {
+        currentTarget.GetComponent<IDanhable>().RecibirDanho(danhoAtaque);
+    }
+
+    public void RecibirDanho(float danho)
+    {
+        vidas -= danho;
+        if (vidas <= 0)
+        {
+            Destroy(this);
+            visualSystem.EjecutarAnimacionMuerte();
+        }
     }
 }

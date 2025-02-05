@@ -65,8 +65,8 @@ public class SistemaCombate : MonoBehaviour
     #region Ejecutados por evento de animacion
     private void Atacar()
     {
-        //hacer daño al targe
-        main.Target.GetComponent<Player>().HacerDanho(danhoAtaque);
+        //hacer daño al target
+        main.Target.GetComponent<Player>().RecibirDanho(danhoAtaque);
     }
     private void FinAnimacionAtaque()
     {

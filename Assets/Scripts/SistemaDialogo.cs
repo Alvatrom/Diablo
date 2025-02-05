@@ -90,6 +90,8 @@ public class SistemaDialogo : MonoBehaviour
 
         escribiendo = false;
     }
+
+
     // sirve para autocompletar la frase
     private void CompletarFrase()
     {
@@ -100,6 +102,8 @@ public class SistemaDialogo : MonoBehaviour
 
         escribiendo = false;
     }
+
+
     //se ejecuta al hacer click al boton para pasar a la siguiente frase 
     public void SiguienteFrase()
     {
