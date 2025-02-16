@@ -44,7 +44,7 @@ public class SistemaMisiones : MonoBehaviour
     }
     private void TerminarToggleMision(MisionSO mision)
     {
-        //togglesMision[mision.indiceMision].ToggleVisual.isOn = true;//al terminar la mision "chekeamos" el toggle
+        togglesMision[mision.indiceMision].ToggleVisual.isOn = true;//al terminar la mision "chekeamos" el toggle
         togglesMision[mision.indiceMision].TextoMision.text = mision.ordenFinal; // ponemos el texto de victoria
 
     }

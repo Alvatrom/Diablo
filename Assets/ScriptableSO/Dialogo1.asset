@@ -15,10 +15,16 @@ MonoBehaviour:
   frases:
   - Anda, hola caballero, pensaba que era el unico por esta mazmorra
   - "\xBFQue te trae por aqui? Bueno la verdad que no puedo perder el tiempo hablando
-    contigo necesito encontrar unas setas malvadas para curar a mi esposa de una
-    horrible enfermedad"
-  - "\xBFPodrias ayudarme a encontrarlas? Te reconpensare"
-  frasesClips: []
+    contigo"
+  - Necesito encontrar unas setas malvadas para curar a mi esposa de una horrible
+    enfermedad
+  - "\xBFPodrias ayudarme a encontrarlas? Te reconpensare con mis conocimientos de
+    la mazmorra"
+  frasesClips:
+  - {fileID: 8300000, guid: 9ad65a7c36ee47e4d871c573286ffdab, type: 3}
+  - {fileID: 8300000, guid: c79fe341cdb07c2448bb46a0fedd0bd7, type: 3}
+  - {fileID: 8300000, guid: cf97a0687f438664ebd415c29a8cf07d, type: 3}
+  - {fileID: 8300000, guid: de51da6ff0a46dd4597f29a60389c6a8, type: 3}
   tiempoEntreLetras: 0.01
   tieneMision: 1
   mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}

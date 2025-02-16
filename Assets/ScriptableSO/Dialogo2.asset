@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: Dialogo2
   m_EditorClassIdentifier: 
   frases:
-  - Muchas gracias caballero, podre volveer con mi esposa. Espero que no sea muy
-    tarde
-  - Aqui tienes, la reconpensa que te prometi. 50 monedas de oro para que disfrutes.
-    Buena suerte caballero. Nos veremos
-  frasesClips: []
+  - Muchas gracias caballero, podre volver con mi esposa. Espero que no sea muy tarde
+  - Si te dirijes al final de la mazmorra por el pasillo principal y giras a la izquierda
+  - Encontraras un cofre del tesoro pero esta protegido por un tipo muy fuerte. Debes
+    tener cuidado
+  - Gracias por ayudarme de nuevo, aqui tienes una recompensa adicional, 50 de Oro
+    Te deseo mucha suerte
+  frasesClips:
+  - {fileID: 8300000, guid: 4dae56b60caeff248bec1906e3dfcc56, type: 3}
+  - {fileID: 8300000, guid: db9b784f97f1314439f11de292b1f9ac, type: 3}
+  - {fileID: 8300000, guid: 531373cb7bdf90a41b626d6bb1548711, type: 3}
+  - {fileID: 8300000, guid: 9a1d76201afcbf044878dba3409008ae, type: 3}
   tiempoEntreLetras: 0.01
   tieneMision: 1
   mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}

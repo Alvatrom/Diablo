@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3784350793459057946}
   - component: {fileID: 3481115856934935123}
   - component: {fileID: -8162866953924247519}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MuroC
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}

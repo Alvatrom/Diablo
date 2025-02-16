@@ -18,6 +18,12 @@ public class NPC : MonoBehaviour,IInteractuable
 
     [SerializeField] 
     private DialogoSO dialogo2;
+    
+    [SerializeField]
+    private DialogoSO dialogoActual;
+
+    [SerializeField]
+    private DialogoSO miDialogo;
 
 
     [SerializeField] 
@@ -31,10 +37,11 @@ public class NPC : MonoBehaviour,IInteractuable
     [SerializeField] private Texture2D iconoPorDefecto;
     [SerializeField] private Texture2D iconoInteraccion;
 
+    //[SerializeField] private AudioSource audioNPC;
 
 
+    //[SerializeField] private Player player;
 
-    private DialogoSO dialogoActual;
 
 
     private void Awake()
@@ -51,6 +58,7 @@ public class NPC : MonoBehaviour,IInteractuable
     private void OnDisable()
     {
         eventManager.OnTerminarMision -= CambiarDialogo;
+        
     }
 
     private void CambiarDialogo(MisionSO misionTerminada)
@@ -63,12 +71,13 @@ public class NPC : MonoBehaviour,IInteractuable
     public void Interactuar(Transform interactuador)
     {
         //poco a poco voy rotandome hacia el interactuador y cuando termine de rotarme se inicia
+        AudioManager.instance.PlaySFX("NPC");
         transform.DOLookAt(interactuador.position, duracionRotacion, AxisConstraint.Y).OnComplete(IniciarDialogo);
     }
 
     private void IniciarDialogo()
     {
-        SistemaDialogo.sD.IniciarDialogo(dialogoActual, cameraPoint);
+        SistemaDialogo.sistema.IniciarDialogo(dialogoActual, cameraPoint);
     }
 
     private void OnMouseEnter()

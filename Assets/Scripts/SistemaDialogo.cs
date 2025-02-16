@@ -6,13 +6,11 @@ using UnityEngine;
 public class SistemaDialogo : MonoBehaviour
 {
 
-    public static SistemaDialogo sD;
+    //public static SistemaDialogo sD;
 
-    private EventManagerSO eventManager;
-    //patron singleton:
-    //1. Solo existe una unica instancia de SistemaDialogo
-    //2. Es accesible desde Cualquier Punto del programa
-    //3.
+    public static SistemaDialogo sistema;
+
+    [SerializeField] private EventManagerSO eventManager;
 
     //cuando es estatica;esa variable pertenece a la clase(no a las instamcias de la clase)(un unico trono)
 
@@ -22,22 +20,28 @@ public class SistemaDialogo : MonoBehaviour
     
     [SerializeField] private Transform npcCamera;// Camara compartida por todos los NPC
 
+
+    [SerializeField] private AudioSource audioSource; ////para poner audio de ias //////////////////////////////////////////////////////
+
     private bool escribiendo;
     private int indiceFraseActual = 0;
 
     private DialogoSO dialogoActual;// para saber en todo momento cual es el dialogo con el que estamos trabajando
 
-    public static SistemaDialogo sitema;
+    [SerializeField] DialogoSO recompensaDialogo2;
+    public bool recompensaRecogida = false;
+    [SerializeField] Player player;
+
 
     //Awake se ejecuta antes del start() independientemente de que 
     //el gameobject este activa o no
     void Awake()
     {
         //Si el trono esta libre...
-        if (sitema == null)
+        if (sistema == null)
         {
             //me hago con el trono, y entonces SistemaDialogo SOY YO (this).
-            sitema = this;
+            sistema = this;
         }
         else
         {
@@ -73,6 +77,9 @@ public class SistemaDialogo : MonoBehaviour
     private IEnumerator EscribirFrase()
     {
         escribiendo = true;
+
+        audioSource.clip = dialogoActual.frasesClips[indiceFraseActual];
+        audioSource.Play();
 
         //Limpio el texto
         textoDialogo.text = string.Empty;
@@ -132,7 +139,12 @@ public class SistemaDialogo : MonoBehaviour
         Time.timeScale = 1.0f;
         marcoDialogo.SetActive(false); //cerramos el marco de dialogo
         indiceFraseActual = 0; // para que en posteriores dialogo empezamos desde indice 0.
-        escribiendo =false;
+        StopAllCoroutines();
+        
+        if(dialogoActual == recompensaDialogo2)
+        {
+            RecogerRecompensa();
+        }
 
         if (dialogoActual.tieneMision)
         {
@@ -140,4 +152,28 @@ public class SistemaDialogo : MonoBehaviour
         }
         dialogoActual = null;// Ya no tengo dialogo que escribir
     }
+
+    private void Recompensa()
+    {
+        recompensaRecogida = true;
+
+    }
+
+    public void RecogerRecompensa()
+    {
+
+        //Player player = interactor.GetComponent<Player>();  // Obtener el componente Player
+        if (player != null && recompensaRecogida == false)
+        {
+            player.Oro += 50;  // Usamos la propiedad para modificar el oro
+            player.TextoOro.text = "Gold " + player.Oro + "/ 200";
+            Debug.Log("50 de oro conseguido");
+            Recompensa();
+        }
+        else
+        {
+            Debug.LogError("No se encontró el componente Player en el interactor.");
+        }
+    }
+
 }

@@ -35,15 +35,19 @@ public class SistemaCombate : MonoBehaviour
             agent.SetDestination(main.Target.position);
 
             //CUando tenga al objetivo a distancia de ataque...
-            if(!agent.pathPending && agent.remainingDistance >= distanciaAtaque)
+            if (!agent.pathPending && agent.remainingDistance <= distanciaAtaque)
             {
-
+                agent.isStopped= true;
+                AudioManager.instance.SFXVolume(0.1f);
+                AudioManager.instance.PlaySFX("Monster");
                 anim.SetBool("attacking", true);
             }
 
         }
         else
         {
+
+            AudioManager.instance.SFXVolume(1f);
             anim.SetBool("attacking", false);
             //Deshabilitamos script de combate
             main.ActivarPatrulla();
@@ -53,7 +57,7 @@ public class SistemaCombate : MonoBehaviour
     private void EnfocarObjetivo()
     {
         //1. calculo ña direccion al objetivo
-        Vector3 direccionATarget =(main.Target.transform.position - transform.position).normalized;
+        Vector3 direccionATarget =(main.Target.transform.position -  this.transform.position).normalized;
         direccionATarget.y = 0;//pongo la "y" a 0 para que no se vuelque
 
         //transformo la direccion en una rotacion
@@ -67,10 +71,12 @@ public class SistemaCombate : MonoBehaviour
     {
         //hacer daño al target
         main.Target.GetComponent<Player>().RecibirDanho(danhoAtaque);
+
     }
     private void FinAnimacionAtaque()
     {
         anim.SetBool("attacking", false);
+        agent.isStopped = false;
     }
     #endregion
 }

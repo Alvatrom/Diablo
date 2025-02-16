@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08621b6bce0b96a499161c6fad0d509c, type: 3}
   m_Name: Mision1
   m_EditorClassIdentifier: 
-  ordenInicial: Recupera hasta 3 setas de la muerte
+  ordenInicial: Recupera  3 setas de la muerte
   ordenFinal: Vuelve con el Enano
   tieneRepeticion: 1
   totalRepeticiones: 3

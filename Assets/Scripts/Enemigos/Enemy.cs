@@ -1,10 +1,11 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDanhable
 {
     [SerializeField]
     private float vidasIniciales;
@@ -32,7 +33,11 @@ public class Enemy : MonoBehaviour
     private SistemaPatrulla patrulla;
     private EnemigoAnimaciones visualSystem;
 
-    private Transform target;//porque el no tiene este codigo?
+    [SerializeField] private Transform target;//porque el no tiene este codigo?
+    
+    [SerializeField] private Transform barraVida;
+
+    
 
     public NavMeshAgent Agent { get => agent; set => agent = value; }
     public SistemaCombate Combate { get => combate; set => combate = value; }
@@ -62,11 +67,11 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void ActivarCombate(Transform transform)
+    public void ActivarCombate(Transform target)
     {
         patrulla.enabled = false;
-        combate.enabled = true;
         this.Target = target;
+        combate.enabled = true;
     }
 
     public void ActivarPatrulla()
@@ -75,6 +80,11 @@ public class Enemy : MonoBehaviour
         combate.enabled = false;
         //habilitar patrulla
         patrulla.enabled = true;
+    }
+
+    public void RecibirDanho(float danho)
+    {
+        throw new NotImplementedException();
     }
 
     private void Muerte()
@@ -96,4 +106,5 @@ public class Enemy : MonoBehaviour
     {
         outline.enabled = false;
     }
+
 }

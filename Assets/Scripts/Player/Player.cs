@@ -1,12 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Player : MonoBehaviour, IDanhable
 {
+    [SerializeField] private EventManagerSO eventManager;
+
+
+
     [SerializeField] private float vidas = 200;
+
+    [SerializeField] private int oro = 0;
+
+    [SerializeField] TMP_Text textoOro;
+    [SerializeField] TMP_Text textoEXP;
     [SerializeField] private float interactionDistance = 2f;
     [SerializeField] private float attackingDistance = 2f;
     [SerializeField] private float danhoAtaque = 10f;
@@ -23,7 +33,9 @@ public class Player : MonoBehaviour, IDanhable
     public PlayerVisual VisualSystem { get => visualSystem; set => visualSystem = value; }
     public int TotalCoins { get => totalCoins; set => totalCoins = value; }
 
+    public int Oro { get => oro; set => oro = value; }
 
+    public TMP_Text TextoOro { get => textoOro; set => textoOro = value; }
 
     [SerializeField] private GameManagerSO gM;// para el sistema de guardado
 
@@ -36,6 +48,43 @@ public class Player : MonoBehaviour, IDanhable
         cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
     }
+
+    private void OnEnable()
+    {
+        if (eventManager != null)
+        {
+            eventManager.OnTerminarMision += AgregarVelocidad;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (eventManager != null)
+        {
+            eventManager.OnTerminarMision -= AgregarVelocidad;
+        }
+    }
+
+    private void AgregarVelocidad(MisionSO mision)
+    {
+        agent.speed = 6;
+        textoEXP.gameObject.SetActive(true);
+
+        Debug.Log("Misión completada. Velocidad aumentada: ");   //Para hacer que las misiones den recompensa al momento
+
+        // Llamar a la corrutina para desactivar el texto después de 4 segundos
+        StartCoroutine(DesactivarTexto());
+
+    }
+
+    private IEnumerator DesactivarTexto()
+    {
+        yield return new WaitForSeconds(4f);
+
+        textoEXP.gameObject.SetActive(false);
+    }
+
+
 
     // Update is called once per frame
     void Update()

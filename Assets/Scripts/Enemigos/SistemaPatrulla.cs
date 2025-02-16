@@ -78,6 +78,7 @@ public class SistemaPatrulla : MonoBehaviour
 
             //le digo a "main" que active el combate,pasandole el objetivo al que tiene que perseguir
             main.ActivarCombate(other.transform);
+            
         }
     }
 }

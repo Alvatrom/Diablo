@@ -15,7 +15,7 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
 
     private void Awake()
     {
-        if (gM.dictionary.ContainsKey(identificador))
+        /*if (gM.dictionary.ContainsKey(identificador))
         {
             //consultar al gM si he de respauwnear o no
             if (!gM.dictionary[identificador] == false)
@@ -26,9 +26,13 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
         else
         {
             gM.dictionary.Add(identificador, true);
-        }
+        }*/
         outline = GetComponent<Outline> ();
         
+    }
+    public void Update()
+    {
+        ComprobarMision();
     }
 
     private void OnMouseEnter()
@@ -45,8 +49,10 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
         gM.dictionary[identificador] = false;
         mision.repeticionActual++; // aumentamos en uno la repeticion de esta mision
 
+        AudioManager.instance.PlaySFX("Seta");
+
         //Todavia quedan setas por recoger 
-        if(mision.repeticionActual< mision.totalRepeticiones)
+        if (mision.repeticionActual< mision.totalRepeticiones)
         {
             eventManager.ActualizarMision(mision);
         }
@@ -55,5 +61,14 @@ public class SetaDeMuerte : MonoBehaviour, IInteractuable
             eventManager.TerminarMision(mision);
         }
         Destroy(gameObject);
+    }
+
+    public void ComprobarMision()
+    {
+        if (mision.repeticionActual >= mision.totalRepeticiones)
+        {
+           Destroy(gameObject);
+
+        }
     }
 }

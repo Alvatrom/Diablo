@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9056073846032498059}
   - component: {fileID: 2046065202035147536}
   - component: {fileID: 2217780710320123964}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arco
   m_TagString: Obstaculo
   m_Icon: {fileID: 0}
