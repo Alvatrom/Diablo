@@ -25,5 +25,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 531373cb7bdf90a41b626d6bb1548711, type: 3}
   - {fileID: 8300000, guid: 9a1d76201afcbf044878dba3409008ae, type: 3}
   tiempoEntreLetras: 0.01
-  tieneMision: 1
+  tieneMision: 0
   mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}

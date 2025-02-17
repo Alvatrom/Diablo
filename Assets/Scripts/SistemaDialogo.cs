@@ -6,8 +6,6 @@ using UnityEngine;
 public class SistemaDialogo : MonoBehaviour
 {
 
-    //public static SistemaDialogo sD;
-
     public static SistemaDialogo sistema;
 
     [SerializeField] private EventManagerSO eventManager;
