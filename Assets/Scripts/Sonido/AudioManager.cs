@@ -91,6 +91,17 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            // Si el sonido es "Monster", establecer el volumen a 0.1
+            if (name == "Monster")
+            {
+                audioSourceSfx.volume = 0.1f;
+            }
+            else
+            {
+                // Si no es "Monster", usa el volumen predeterminado
+                audioSourceSfx.volume = 1.0f; // O el volumen predeterminado que desees
+            }
+
             audioSourceSfx.PlayOneShot(s.clip);
         }
     }

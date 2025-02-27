@@ -623,7 +623,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2334199081303742568}
+  - component: {fileID: 2599480567424150668}
   - component: {fileID: 628085202204417829}
+  - component: {fileID: 4446088456367792264}
+  - component: {fileID: 3766277164414187432}
   m_Layer: 0
   m_Name: PC_Nightmare_Mushroom
   m_TagString: Untagged
@@ -648,6 +651,22 @@ Transform:
   - {fileID: 3523693341794973560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2599480567424150668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295044392579028343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3481051d6a4bc354c809149ae82b01b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gM: {fileID: 0}
+  mision: {fileID: 11400000, guid: f41977831df1a424ca48d61a487ab656, type: 2}
+  identificador: 0
+  eventManager: {fileID: 11400000, guid: af0642a738244e243a4ff19bba210c33, type: 2}
 --- !u!95 &628085202204417829
 Animator:
   serializedVersion: 5
@@ -669,6 +688,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &4446088456367792264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295044392579028343}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0827699, y: 1.0473608, z: 1.0052621}
+  m_Center: {x: 0.55183244, y: 0.50255436, z: 0.0026310682}
+--- !u!114 &3766277164414187432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295044392579028343}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.21681774, g: 0.9622642, b: 0.19063713, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7577214843124897125
 GameObject:
   m_ObjectHideFlags: 0

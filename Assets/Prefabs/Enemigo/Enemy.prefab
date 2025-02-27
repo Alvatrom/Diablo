@@ -1613,6 +1613,14 @@ MonoBehaviour:
   main: {fileID: 8149799286792298073}
   agent: {fileID: 5447853417887290699}
   anim: {fileID: 9201042598204386061}
+  attackPoint: {fileID: 5407357811704352220}
+  radioAtaque: 1
+  queEsDanhable:
+    serializedVersion: 2
+    m_Bits: 8
+  player: {fileID: 0}
+  danhoEnemigo: 0
+  danhoRecibido: 0
   velocidadCombate: 3.5
   distanciaAtaque: 1
   danhoAtaque: 0

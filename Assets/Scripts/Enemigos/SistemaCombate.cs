@@ -9,6 +9,19 @@ public class SistemaCombate : MonoBehaviour
     [SerializeField] private Enemy main;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator anim;
+
+    //probar
+    [Header("Sistema de ataque")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float radioAtaque = 1;
+    [SerializeField] private LayerMask queEsDanhable;
+    [SerializeField] private Player player;
+    private bool ventanaAbierta;
+    private bool puedoDanhar = true;
+    [SerializeField] private float danhoEnemigo = 25, danhoRecibido;
+
+
+
     [SerializeField] float velocidadCombate = 8f, distanciaAtaque, danhoAtaque;
 
 
@@ -38,17 +51,18 @@ public class SistemaCombate : MonoBehaviour
             if (!agent.pathPending && agent.remainingDistance <= distanciaAtaque)
             {
                 agent.isStopped= true;
-                AudioManager.instance.SFXVolume(0.1f);
-                AudioManager.instance.PlaySFX("Monster");
-                anim.SetBool("attacking", true);
+
+                if (!anim.GetBool("attacking")) // Solo activa si no está ya atacando
+                {
+                    anim.SetBool("attacking", true);
+                }
             }
 
         }
-        else
+        else if(!agent.pathPending && agent.remainingDistance > distanciaAtaque)
         {
-
-            AudioManager.instance.SFXVolume(1f);
             anim.SetBool("attacking", false);
+            agent.isStopped = false;
             //Deshabilitamos script de combate
             main.ActivarPatrulla();
         }
@@ -67,6 +81,11 @@ public class SistemaCombate : MonoBehaviour
         transform.rotation = rotacionATarget;
     }
     #region Ejecutados por evento de animacion
+
+    private void InicioAnimacionataque()
+    {
+        ventanaAbierta = true;
+    }
     private void Atacar()
     {
         //hacer daño al target
@@ -77,6 +96,39 @@ public class SistemaCombate : MonoBehaviour
     {
         anim.SetBool("attacking", false);
         agent.isStopped = false;
+        ventanaAbierta = false;
     }
+
+    private void DetectarImpacto()
+    {
+        //1º referenciar el attackPoint
+        //2º crear una variable que represente el radio de ataque
+        //3 crear una variable que represente que es dañable,(layer)
+
+
+        Collider[] collDetectados = Physics.OverlapSphere(attackPoint.position, radioAtaque, queEsDanhable);
+
+        //si hemos detectado algo dentro de nuestro radar
+        if (collDetectados.Length > 0)
+        {
+            //pasoo collider por collider aplicando daño
+            for (int i = 0; i < collDetectados.Length; i++)
+            {
+                collDetectados[i].GetComponent<Player>().RecibirDanho(danhoEnemigo);
+
+            }
+            puedoDanhar = false;
+        }
+    }
+    /*private void AbrirVentanaAtaque()
+    {
+        ventanaAbierta = true;
+
+    }*/
+    /*private void CerrarVentanaAtaque()
+    {
+        ventanaAbierta = false;
+
+    }*/
     #endregion
 }

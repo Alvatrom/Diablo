@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, IDanhable
 
     [SerializeField] TMP_Text textoOro;
     [SerializeField] TMP_Text textoEXP;
+    [SerializeField] TMP_Text textoVidas;
     [SerializeField] private float interactionDistance = 2f;
     [SerializeField] private float attackingDistance = 2f;
     [SerializeField] private float danhoAtaque = 10f;
@@ -162,6 +163,8 @@ public class Player : MonoBehaviour, IDanhable
     public void RecibirDanho(float danho)
     {
         vidas -= danho;
+        textoVidas.text = "Vida: " + vidas + "/ 200";
+        //Vida: 100/100
         if (vidas <= 0)
         {
             Destroy(this);

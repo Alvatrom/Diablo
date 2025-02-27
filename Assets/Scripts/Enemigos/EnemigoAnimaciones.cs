@@ -41,4 +41,9 @@ public class EnemigoAnimaciones : MonoBehaviour
     {
         anim.SetBool("attacking", false);
     }
+
+    public void ReproducirSonidoAtaque()
+    {
+        AudioManager.instance.PlaySFX("Monster");
+    }
 }
