@@ -50,7 +50,7 @@ public class PlayerVisual : MonoBehaviour
 
     public void EjecutarAnimacionMuerte()
     {
-        animator.SetTrigger("death");
+        animator.SetBool("live", false);
     }
 
     public void StartAttacking()
@@ -61,5 +61,10 @@ public class PlayerVisual : MonoBehaviour
     public void StopAttacking()
     {
         animator.SetBool("attacking", false);
+    }
+
+    public void ReproducirSonidoAtaque()
+    {
+        AudioManager.instance.PlaySFX("HurtPlayer");
     }
 }

@@ -11,13 +11,21 @@ public class CamaraMinimapa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        distanciaAPlayer = transform.position - player.transform.position;
+        if(player!= null)
+        {
+            distanciaAPlayer = transform.position - player.transform.position;
+        }
+        
     }
 
     // Update is called once per frame
     void LateUpdate()// para evitar vibraciones de camara, espera que todos los elementos
         //se coloquen y luego pone la posicion en la camara, el lateUpdate es el ultimo de todos los update
     {
-        transform.position = player.transform.position + distanciaAPlayer;
+        if (player != null)
+        {
+            transform.position = player.transform.position + distanciaAPlayer;
+
+        }
     }
 }

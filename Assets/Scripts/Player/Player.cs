@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDanhable
     [SerializeField] private float interactionDistance = 2f;
     [SerializeField] private float attackingDistance = 2f;
     [SerializeField] private float danhoAtaque = 10f;
+    private bool ventanaAbierta;
 
     private int totalCoins;
     private NavMeshAgent agent;
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour, IDanhable
     public int Oro { get => oro; set => oro = value; }
 
     public TMP_Text TextoOro { get => textoOro; set => textoOro = value; }
+
+    public float Vidas { get => vidas; set => vidas = value; }
 
     [SerializeField] private GameManagerSO gM;// para el sistema de guardado
 
@@ -137,7 +140,8 @@ public class Player : MonoBehaviour, IDanhable
                 if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
                 {
                     FaceTarget();
-                    visualSystem.StartAttacking();
+                    InicioAnimacionataque();
+                    
                 }
             }
             else
@@ -157,18 +161,45 @@ public class Player : MonoBehaviour, IDanhable
 
     public void Atacar()
     {
-        currentTarget.GetComponent<IDanhable>().RecibirDanho(danhoAtaque);
+        if(currentTarget!= null && currentTarget.TryGetComponent(out IDanhable danhable))
+        {
+            danhable.RecibirDanho(danhoAtaque);
+            //currentTarget.GetComponent<IDanhable>().RecibirDanho(danhoAtaque);
+            Debug.Log("Daño aplicado al objetivo: " + currentTarget.name);
+
+        }
+        else
+        {
+            Debug.LogWarning("El objetivo no tiene el componente IDanhable o es nulo.");
+        }
+    }
+
+    private void InicioAnimacionataque()
+    {
+        ventanaAbierta = true;
+        visualSystem.StartAttacking();
+    }
+
+    private void FinAnimacionAtaque()
+    {
+        visualSystem.StopAttacking();
+        agent.isStopped = false;
+        ventanaAbierta = false;
     }
 
     public void RecibirDanho(float danho)
     {
+        Debug.Log("daño recibido = " + danho);
         vidas -= danho;
         textoVidas.text = "Vida: " + vidas + "/ 200";
         //Vida: 100/100
         if (vidas <= 0)
         {
-            Destroy(this);
+            agent.isStopped = true;
+            //GameManager
             visualSystem.EjecutarAnimacionMuerte();
+            AudioManager.instance.PlaySFX("Muerte");
+            //Destroy(this);
         }
     }
 }

@@ -94,9 +94,23 @@ public class GameManager : MonoBehaviour
         }
         if (player == null)
         {
-            Debug.LogWarning("El objeto Player no se encontró en la escena.");
+            player = FindObjectOfType<Player>();
+
+            if (player == null)
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                canvasMuerte.SetActive(true);
+                Debug.LogWarning("El objeto Player no se encontró en la escena.");
+            }
+            else if (player != null)
+            {
+                Time.timeScale = 1;
+                canvasMuerte.SetActive(false);
+            }
+
         }
-        else if (player == null && canvasMuerte != null && SceneManager.GetActiveScene().name != "Diablo")
+        if (player != null && player.Vidas <= 0 && canvasMuerte != null && SceneManager.GetActiveScene().name == "Diablo")
         {
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
@@ -153,17 +167,21 @@ public class GameManager : MonoBehaviour
         //para encontrar si o si al player
         if (player == null)
         {
-            GameObject buscador = GameObject.Find("Player1");
-            //player = FindObjectOfType<FirstPerson>();
-            player = buscador.GetComponent<Player>();
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            canvasMuerte.SetActive(true);
-            Debug.LogWarning("No se encontró ningún objeto de tipo 'Player' en la escena.");
-            /*if (player == null)
+            //GameObject buscador = GameObject.Find("Jugador");
+            player = FindObjectOfType<Player>();
+            //player = buscador.GetComponent<Player>();
+
+            if(player == null)
             {
-                
-            }*/
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                canvasMuerte.SetActive(true);
+                Debug.LogWarning("No se encontró ningún objeto de tipo 'Player' en la escena.");
+            }
+            else if(player != null)
+            {
+                canvasMuerte.SetActive(false);
+            }
         }
         if (player != null)
         {
@@ -171,6 +189,4 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
-
 }

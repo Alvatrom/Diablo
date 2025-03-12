@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayMusic("PlayMode");
+        ResetMusicSource();
     }
 
     private void FiltroEscena(Scene scene, LoadSceneMode mode)
@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             // Si el sonido es "Monster", establecer el volumen a 0.1
-            if (name == "Monster")
+            if (name == "Monster" || name == "Muerte")
             {
                 audioSourceSfx.volume = 0.1f;
             }

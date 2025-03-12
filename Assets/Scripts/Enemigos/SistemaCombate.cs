@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SistemaCombate : MonoBehaviour
+public class SistemaCombate : MonoBehaviour, IDanhable
 {
     [SerializeField] private Enemy main;
     [SerializeField] private NavMeshAgent agent;
@@ -39,31 +39,37 @@ public class SistemaCombate : MonoBehaviour
     private void Update()
     {
 
-        //solo si existe un objetivo y es alcanzable...
         if (main.Target != null && agent.CalculatePath(main.Target.position, new NavMeshPath()))
         {
-            //procuramos que siempre estemos enfocando al player
+            // Procuramos que siempre estemos enfocando al player
             EnfocarObjetivo();
-            //Perseguiremos al objetivo
+            // Perseguiremos al objetivo
             agent.SetDestination(main.Target.position);
 
-            //CUando tenga al objetivo a distancia de ataque...
+            // Cuando tenga al objetivo a distancia de ataque...
             if (!agent.pathPending && agent.remainingDistance <= distanciaAtaque)
             {
-                agent.isStopped= true;
+                //Debug.Log("Distancia restante: " + agent.remainingDistance);
 
-                if (!anim.GetBool("attacking")) // Solo activa si no está ya atacando
+                // Solo activa si no está ya atacando
+                if (!anim.GetBool("attacking"))
                 {
+                    Debug.Log("Distancia restante: " + agent.remainingDistance);
                     anim.SetBool("attacking", true);
                 }
             }
-
+            else if (!agent.pathPending && agent.remainingDistance > distanciaAtaque)
+            {
+                // Desactivar el ataque si el enemigo está fuera de la distancia de ataque
+                anim.SetBool("attacking", false);
+                agent.isStopped = false;
+            }
         }
-        else if(!agent.pathPending && agent.remainingDistance > distanciaAtaque)
+        else
         {
+            // Desactivar el ataque si no hay objetivo o no es alcanzable
             anim.SetBool("attacking", false);
             agent.isStopped = false;
-            //Deshabilitamos script de combate
             main.ActivarPatrulla();
         }
     }
@@ -88,8 +94,17 @@ public class SistemaCombate : MonoBehaviour
     }
     private void Atacar()
     {
-        //hacer daño al target
-        main.Target.GetComponent<Player>().RecibirDanho(danhoAtaque);
+        // Verificar que el objetivo no sea nulo y tenga el componente IDanhable
+        if (main.Target != null && main.Target.TryGetComponent(out IDanhable danhable))
+        {
+            // Aplicar daño al objetivo
+            danhable.RecibirDanho(danhoAtaque);
+            Debug.Log("Daño aplicado al objetivo: " + main.Target.name);
+        }
+        else
+        {
+            Debug.LogWarning("El objetivo no tiene el componente IDanhable o es nulo.");
+        }
 
     }
     private void FinAnimacionAtaque()
@@ -120,11 +135,16 @@ public class SistemaCombate : MonoBehaviour
             puedoDanhar = false;
         }
     }
-    /*private void AbrirVentanaAtaque()
-    {
-        ventanaAbierta = true;
 
-    }*/
+    public void RecibirDanho(float danho)
+    {
+        throw new NotImplementedException();
+    }
+    /*private void AbrirVentanaAtaque()
+{
+   ventanaAbierta = true;
+
+}*/
     /*private void CerrarVentanaAtaque()
     {
         ventanaAbierta = false;

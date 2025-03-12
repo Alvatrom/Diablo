@@ -63,7 +63,8 @@ public class Cofre : MonoBehaviour, IInteractuable
         }
         else
         {
-            Debug.LogError("No se encontró el componente Player en el interactor.");
+            //Debug.LogError("No se encontró el componente Player en el interactor.");
+            Debug.Log("No se encontró el componente Player en el interactor.");
         }
     }
 }

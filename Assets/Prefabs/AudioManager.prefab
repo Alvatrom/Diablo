@@ -190,6 +190,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 967d7cbbcf00b234ca2b7347eb864281, type: 3}
   - name: NPC
     clip: {fileID: 8300000, guid: 26528b5f62381e447aa69783d2148602, type: 3}
+  - name: Muerte
+    clip: {fileID: 8300000, guid: 84d1c8ce88dde2c4c887389d0f3fe276, type: 3}
+  - name: HurtPlayer
+    clip: {fileID: 8300000, guid: 6f2d1d653f3e1944186447e0b2ea200c, type: 3}
   musicSource: {fileID: 4332566913448295667}
   audioSourceSfx: {fileID: 1526715939660769115}
 --- !u!1 &5699240145503578883
